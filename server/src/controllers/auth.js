@@ -65,8 +65,17 @@ const loginUser = async (req, res, next) => {
     res.status(200).send({ token })
 }
 
+const verify = async (req, res, next) => {
+    try {
+        res.json(true)
+    } catch (error) {
+        console.log(error.message);
+        res.status(500).send(`Server error = ${error.message}`)
+    }
+}
 
 module.exports = {
     registerUser,
     loginUser,
+    verify
   };
